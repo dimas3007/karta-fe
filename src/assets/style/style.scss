@@ -1,0 +1,147 @@
+$primary: rgb(9, 23, 37);
+$secondary: rgb(9, 30, 50);
+$blue: rgb(10, 106, 147);
+$gray: rgb(20, 47, 72);
+$light-gray: rgb(80, 121, 161);
+$white: #fafcff;
+
+$rg: 16px;
+$sm: 14px;
+$xs: 12px;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  color-scheme: light dark;
+  color: $white;
+  background-color: $primary;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1 {
+  font-size: 2.2rem;
+  line-height: 1.1;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.container {
+  padding: 25px 50px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  p {
+    border: 2px solid $light-gray;
+    padding: 5px 25px;
+    border-radius: 50px;
+    color: $light-gray;
+    font-size: $sm;
+  }
+}
+
+.networth {
+  margin: 2rem 0;
+  p {
+    color: $light-gray;
+    margin: 0;
+    padding: 0;
+    font-size: $xs;
+  }
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  background-color: $secondary;
+  padding: 2rem;
+  border-radius: 15px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tabs {
+    display: flex;
+    align-items: center;
+    background-color: $gray;
+    border-radius: 50px;
+    font-size: $xs;
+
+    .tab {
+      padding: 10px 35px;
+      border-radius: 50px;
+      cursor: pointer;
+
+      &.active {
+        background-color: $blue;
+      }
+    }
+  }
+
+  .tab-content {
+    margin: 2rem 0;
+  }
+}
+
+table {
+  width: 100%;
+  border: none;
+
+  thead {
+    color: $light-gray;
+    font-size: $sm;
+
+    td {
+      border-bottom: 1px solid $gray;
+    }
+  }
+
+  td {
+    padding: 10px 15px;
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        background-color: $primary;
+      }
+    }
+  }
+}
