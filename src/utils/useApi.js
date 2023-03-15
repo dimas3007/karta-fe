@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 const API_URL = "https://api.covalenthq.com/v1";
 const API_KEY = "ckey_4c1a6929f537401b8a6c14c0d27";
-const COLLECTION_ADDRESS = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
 
 const useApi = (initialPath, initialData) => {
   const [url, setUrl] = useState(`${API_URL}/${initialPath}/?key=${API_KEY}`);

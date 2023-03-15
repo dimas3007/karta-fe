@@ -1,24 +1,39 @@
+import { useState } from "react";
 import Tabs from "../components/Tabs";
+import useApi from "../utils/useApi";
 
-const tabs = [
-  {
-    label: "Tokens",
-    content: `
-      function sum(a, b) {
-        return a + b;
-      }
-    `,
-  },
-  {
-    label: "NFTs",
-    content: `
-      def sum(a, b):
-        return a + b
-    `,
-  },
-];
+const COLLECTION_ADDRESS = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
 
 const Portfolio = () => {
+  const { data: balance, url } = useApi(
+    `eth-mainnet/address/${COLLECTION_ADDRESS}/balances_v2`,
+    []
+  );
+
+  const { data: nft } = useApi(
+    `eth-mainnet/address/${COLLECTION_ADDRESS}/balances_nft`,
+    []
+  );
+
+  const [tabs, setTabs] = useState([
+    {
+      label: "Tokens",
+    },
+    {
+      label: "NFTs",
+    },
+  ]);
+
+  let netWorth = 0;
+
+  balance?.data?.items?.forEach((item) => {
+    if (item.contract_decimals === 0) {
+      netWorth += parseInt(item.balance);
+    } else {
+      netWorth += parseFloat(item.quote);
+    }
+  });
+
   return (
     <div className="container">
       <div className="header">
@@ -32,9 +47,9 @@ const Portfolio = () => {
       </div>
       <div className="networth">
         <p>Net Worth</p>
-        <h2>$1,234</h2>
+        <h2>${netWorth}</h2>
       </div>
-      <Tabs tabs={tabs} />
+      <Tabs balance={balance} nft={nft} tabs={tabs} />
     </div>
   );
 };

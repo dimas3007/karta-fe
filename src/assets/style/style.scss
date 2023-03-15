@@ -143,5 +143,27 @@ table {
         background-color: $primary;
       }
     }
+
+    p {
+      color: $light-gray;
+    }
+  }
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.card-img {
+  flex-basis: 25%;
+  padding: 1rem;
+  border-radius: 50px;
+  background-color: $gray;
+
+  img {
+    width: 100%;
   }
 }
